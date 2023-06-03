@@ -15,12 +15,13 @@ spec:
         app: mysql
     spec:
       containers:
-        - image: mysql:8.0
+        - image: mysql:5.7
           name: mysql
           env:
             # Don't deploy this in production, or you'll have a bad time
+            # This is just for demo purposes, use secrets instead
             - name: MYSQL_ROOT_PASSWORD
-              value: root
+              value: tea
             - name: MYSQL_DATABASE
               value: zoo
           ports:
