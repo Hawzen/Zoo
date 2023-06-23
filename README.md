@@ -1,13 +1,13 @@
-# Install and uninstall
-run
+```
+         (__)          (__)
+         (oo)          (oo)
+  /-------\/             \/-------\
+ / |     ||               ||     | \
+*  ||----||               ||----||  &
+   ^^    ^^               ^^    ^^
+```
 
 
-delete
-
-# Log into DB
-Make sure the app is up before doing this
-Copy the name of the pod and run
-You'll be prompted for a password, enter `tea`. This might change in the future
 
 
 # 🚀 Install and Uninstall
