@@ -15,7 +15,7 @@ spec:
         app: mysql
     spec:
       containers:
-        - image: mysql:5.7
+        - image: mysql
           name: mysql
           env:
             # Don't deploy this in production, or you'll have a bad time
