@@ -1,3 +1,4 @@
+# Zoo
 ```
          (__)          (__)
          (oo)          (oo)
@@ -6,8 +7,6 @@
 *  ||----||               ||----||  &
    ^^    ^^               ^^    ^^
 ```
-
-
 
 
 # 🚀 Install and Uninstall
@@ -23,6 +22,13 @@ eval $(minikube docker-env) # setup minikube docker images
 docker build . -t zoo
 kubectl get pods # Confirm everything is running
 ```
+
+> **Note:** 
+> 
+> If you want to connect via the ingress, you must run `minikube addons enable ingress`, but this is not required
+> We can just connect to the service directly since it's a local cluster
+
+
 
 ## Deleting
 To uninstall the application, run the following command:
