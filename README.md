@@ -12,15 +12,14 @@
 # 🚀 Install and Uninstall
 
 ## Running
-To install the application, run the following commands:
+To install the application, cd into the project's directory then run the following commands:
 
 ```bash
-# be at root directory
-minikube start
+minikube start --mount-string="$(pwd):/mount" --mount # need to mount for hot reload
 kubectl apply -f k8s/ # add yml to cluster
 eval $(minikube docker-env) # setup minikube docker images
 docker build . -t zoo
-kubectl get pods # Confirm everything is running
+minikube service zoo
 ```
 
 > **Note:** 

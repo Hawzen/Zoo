@@ -29,6 +29,13 @@ spec:
         name: zoo
         ports:
         - containerPort: 3000
+        volumeMounts:
+        - name: zoo-volume
+          mountPath: /zoo
+      volumes:
+      - name: zoo-volume
+        hostPath:
+          path: /mount/zoo
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
