@@ -4,11 +4,17 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+// Routes
 const indexRouter = require('./routes/index');
 const animalsRouter = require('./routes/animal');
 const caretakersRouter = require('./routes/caretaker');
 const enclosuresRouter = require('./routes/enclosure');
 const feedingSchedulesRouter = require('./routes/feedingschedule');
+
+// Docs
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./config/swaggerDoc');
+
 
 // Sequelize
 const sequelize = require("./models/sequelize");
@@ -30,6 +36,9 @@ app.use('/animals', animalsRouter);
 app.use('/caretakers', caretakersRouter);
 app.use('/enclosures', enclosuresRouter);
 app.use('/feeding-schedules', feedingSchedulesRouter);
+
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
