@@ -1,0 +1,24 @@
+alertmanager:
+  enabled: false
+
+kubeStateMetrics:
+  enabled: false
+
+nodeExporter:
+  enabled: false
+
+pushgateway:
+  enabled: false
+
+server:
+  service:
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "80"
+  resources: {}
+  config:
+    rule_files: []
+    scrape_configs:
+    - job_name: "zoo"
+      static_configs:
+      - targets: ["zoo:3000"]

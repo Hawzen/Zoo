@@ -19,6 +19,7 @@ minikube start --mount-string="$(pwd):/mount" --mount # need to mount for hot re
 kubectl apply -f k8s/ # add yml to cluster
 eval $(minikube docker-env) # setup minikube docker images
 docker build . -t zoo
+helm install prometheus prometheus-community/prometheus -f values/prometheus-values.yaml
 minikube service zoo
 ```
 
@@ -27,7 +28,11 @@ minikube service zoo
 > If you want to connect via the ingress, you must run `minikube addons enable ingress`, but this is not required
 > We can just connect to the service directly since it's a local cluster
 
-
+### If you can't find the promtheus chart
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+```
 
 ## Deleting
 To uninstall the application, run the following command:
@@ -48,3 +53,19 @@ kubectl exec -it <<POD NAME YOU COPIED, e.g. `mysql-756d44657b-q9btd`>> -- mysql
 ```
 
 You'll be prompted for a password. Enter `tea`. (This might change in the future.)
+
+
+
+
+
+
+
+
+
+
+
+_______________________
+## Danger zone
+
+POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=prometheus,app.kubernetes.io/instance=prometheus" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace default port-forward $POD_NAME 9090 &

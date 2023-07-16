@@ -19,6 +19,9 @@ const swaggerDocument = require('./config/swaggerDoc');
 // Sequelize
 const sequelize = require("./models/sequelize");
 
+// Prometheus
+const metrics = require('./routes/metrics');
+
 const app = express();
 
 // view engine setup
@@ -37,8 +40,9 @@ app.use('/caretakers', caretakersRouter);
 app.use('/enclosures', enclosuresRouter);
 app.use('/feeding-schedules', feedingSchedulesRouter);
 
-
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+app.use("/metrics", metrics);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
